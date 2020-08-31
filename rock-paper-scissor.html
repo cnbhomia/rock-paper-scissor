@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+</head>
+
+<body>
+    <script>
+
+        const options = ['rock' , 'scissor', 'paper']; // the list is in the order who kills who
+        
+//3. Create function to compare who wins
+
+        function playRound(userSelection, computerSelection) {
+
+            let x = options.indexOf(userSelection);
+            console.log(x);
+            let y = options.indexOf(computerSelection);
+            console.log(y);
+            console.log(y-x);
+
+            if ((y-x) == 1) {
+                console.log('Player Wins !');
+                return 1;
+            }else if ( (y - x) == -2 )  {
+                console.log('Player Wins !');
+                return 1;
+            }else if ((y-x) == 0){
+                console.log('It\'s a draw !');
+                return 0;
+                
+            }
+            else {
+                console.log('Computer Wins');
+                return 2;
+            }
+
+        }
+//4. Game function to playRound 5 times. 
+
+        function game(){
+            let playerWins = 0;
+            let computerWins = 0;
+
+            for( i=1 ; i<=5 ; i++){
+                
+                // 1. Get user input on rock, paper or scissor, case insensitive          
+
+                let userSelection = prompt('Please chose one: rock, paper or scissor?');
+                userSelection = userSelection.toLowerCase();
+                console.log('Player selects: ',userSelection);
+
+                //2. Randomize computer selection
+
+                const random = Math.floor( Math.random()* options.length);
+                //console.log(random);
+                let computerSelection = options[random];
+                console.log('Computer selects: ',computerSelection);
+                
+                
+                
+                whoWon = playRound(userSelection, computerSelection);
+                if (whoWon == 1) {
+                    playerWins +=1;
+                }
+
+                if (whoWon == 2 ) {
+                    computerWins +=1;
+                }
+            }
+
+            console.log('Player Score: ', playerWins);
+            console.log('Computer Score: ', computerWins); 
+            console.log((playerWins > computerWins)?"Player Won the game" : "Computer Won the game");
+        }
+
+
+        game();
+        
+
+</script>
+
+
+
+
+</body>
+
+
+
+</html>
